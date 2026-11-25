@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agenda de Treinos</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>Agenda de Treinos</h1>
+    <div class="acoes-topo">
+      <button id="btn-novo" class="primario">+ Novo treino</button>
+    </div>
+  </header>
+
+  <main id="lista">Carregando…</main>
+
+  <!-- Modal: cadastrar treino -->
+  <dialog id="dlg-novo">
+    <form id="form-novo" method="dialog">
+      <h2>Novo treino</h2>
+      <label>Data e horário <input type="datetime-local" name="data_hora" required></label>
+      <label>Título <input name="titulo" required placeholder="Intervalado 6x800m"></label>
+      <label>Descrição <textarea name="descricao" rows="3" placeholder="Aquecimento, séries, ritmos…"></textarea></label>
+      <div class="linha">
+        <label>Modalidade
+          <select name="modalidade">
+            <option value="corrida">Corrida</option>
+            <option value="ciclismo">Ciclismo</option>
+            <option value="natacao">Natação</option>
+            <option value="forca">Força</option>
+            <option value="outro">Outro</option>
+          </select>
+        </label>
+        <label>Duração (min) <input type="number" name="duracao_prevista_min" min="1"></label>
+      </div>
+      <fieldset>
+        <legend>Participantes</legend>
+        <div id="novo-participantes"></div>
+        <button type="button" id="btn-add-linha">+ pessoa</button>
+      </fieldset>
+      <div class="rodape">
+        <button type="button" data-fechar>Cancelar</button>
+        <button type="submit" class="primario">Cadastrar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Modal: editar título/descrição -->
+  <dialog id="dlg-editar">
+    <form id="form-editar" method="dialog">
+      <h2>Editar treino</h2>
+      <label>Título <input name="titulo" required></label>
+      <label>Descrição <textarea name="descricao" rows="4"></textarea></label>
+      <div class="rodape">
+        <button type="button" data-fechar>Cancelar</button>
+        <button type="submit" class="primario">Salvar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Modal: alterar participantes -->
+  <dialog id="dlg-pessoas">
+    <form id="form-pessoas" method="dialog">
+      <h2>Participantes</h2>
+      <p class="dica">Edite, adicione ou remova linhas e salve para trocar a lista inteira.</p>
+      <div id="pessoas-linhas"></div>
+      <button type="button" id="btn-add-pessoa">+ pessoa</button>
+      <div class="rodape">
+        <button type="button" data-fechar>Cancelar</button>
+        <button type="submit" class="primario">Salvar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
